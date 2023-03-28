@@ -4,39 +4,27 @@
 package apache.rocketmq.v2;
 
 /**
- * <pre>
- * When publishing messages to or subscribing messages from brokers, clients
- * shall include or validate digests of message body to ensure data integrity.
- * For message publishing, when an invalid digest were detected, brokers need
- * respond client with BAD_REQUEST.
- * For messages subscription, when an invalid digest were detected, consumers
- * need to handle this case according to message type:
- * 1) Standard messages should be negatively acknowledged instantly, causing
- * immediate re-delivery; 2) FIFO messages require special RPC, to re-fetch
- * previously acquired messages batch;
- * </pre>
- *
- * Protobuf type {@code apache.rocketmq.v2.Digest}
+ * Protobuf type {@code apache.rocketmq.v2.DeadLetterQueue}
  */
-public final class Digest extends
+public final class DeadLetterQueue extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:apache.rocketmq.v2.Digest)
-    DigestOrBuilder {
+    // @@protoc_insertion_point(message_implements:apache.rocketmq.v2.DeadLetterQueue)
+    DeadLetterQueueOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use Digest.newBuilder() to construct.
-  private Digest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use DeadLetterQueue.newBuilder() to construct.
+  private DeadLetterQueue(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private Digest() {
-    type_ = 0;
-    checksum_ = "";
+  private DeadLetterQueue() {
+    topic_ = "";
+    messageId_ = "";
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new Digest();
+    return new DeadLetterQueue();
   }
 
   @java.lang.Override
@@ -44,7 +32,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private Digest(
+  private DeadLetterQueue(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -62,16 +50,16 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          case 8: {
-            int rawValue = input.readEnum();
+          case 10: {
+            java.lang.String s = input.readStringRequireUtf8();
 
-            type_ = rawValue;
+            topic_ = s;
             break;
           }
           case 18: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            checksum_ = s;
+            messageId_ = s;
             break;
           }
           default: {
@@ -97,68 +85,103 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return apache.rocketmq.v2.MQDomain.internal_static_apache_rocketmq_v2_Digest_descriptor;
+    return apache.rocketmq.v2.MQDomain.internal_static_apache_rocketmq_v2_DeadLetterQueue_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return apache.rocketmq.v2.MQDomain.internal_static_apache_rocketmq_v2_Digest_fieldAccessorTable
+    return apache.rocketmq.v2.MQDomain.internal_static_apache_rocketmq_v2_DeadLetterQueue_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            apache.rocketmq.v2.Digest.class, apache.rocketmq.v2.Digest.Builder.class);
+            apache.rocketmq.v2.DeadLetterQueue.class, apache.rocketmq.v2.DeadLetterQueue.Builder.class);
   }
 
-  public static final int TYPE_FIELD_NUMBER = 1;
-  private int type_;
+  public static final int TOPIC_FIELD_NUMBER = 1;
+  private volatile java.lang.Object topic_;
   /**
-   * <code>.apache.rocketmq.v2.DigestType type = 1;</code>
-   * @return The enum numeric value on the wire for type.
-   */
-  @java.lang.Override public int getTypeValue() {
-    return type_;
-  }
-  /**
-   * <code>.apache.rocketmq.v2.DigestType type = 1;</code>
-   * @return The type.
-   */
-  @java.lang.Override public apache.rocketmq.v2.DigestType getType() {
-    @SuppressWarnings("deprecation")
-    apache.rocketmq.v2.DigestType result = apache.rocketmq.v2.DigestType.valueOf(type_);
-    return result == null ? apache.rocketmq.v2.DigestType.UNRECOGNIZED : result;
-  }
-
-  public static final int CHECKSUM_FIELD_NUMBER = 2;
-  private volatile java.lang.Object checksum_;
-  /**
-   * <code>string checksum = 2;</code>
-   * @return The checksum.
+   * <pre>
+   * Original topic for this DLQ message.
+   * </pre>
+   *
+   * <code>string topic = 1;</code>
+   * @return The topic.
    */
   @java.lang.Override
-  public java.lang.String getChecksum() {
-    java.lang.Object ref = checksum_;
+  public java.lang.String getTopic() {
+    java.lang.Object ref = topic_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      checksum_ = s;
+      topic_ = s;
       return s;
     }
   }
   /**
-   * <code>string checksum = 2;</code>
-   * @return The bytes for checksum.
+   * <pre>
+   * Original topic for this DLQ message.
+   * </pre>
+   *
+   * <code>string topic = 1;</code>
+   * @return The bytes for topic.
    */
   @java.lang.Override
   public com.google.protobuf.ByteString
-      getChecksumBytes() {
-    java.lang.Object ref = checksum_;
+      getTopicBytes() {
+    java.lang.Object ref = topic_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      checksum_ = b;
+      topic_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int MESSAGE_ID_FIELD_NUMBER = 2;
+  private volatile java.lang.Object messageId_;
+  /**
+   * <pre>
+   * Original message id for this DLQ message.
+   * </pre>
+   *
+   * <code>string message_id = 2;</code>
+   * @return The messageId.
+   */
+  @java.lang.Override
+  public java.lang.String getMessageId() {
+    java.lang.Object ref = messageId_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      messageId_ = s;
+      return s;
+    }
+  }
+  /**
+   * <pre>
+   * Original message id for this DLQ message.
+   * </pre>
+   *
+   * <code>string message_id = 2;</code>
+   * @return The bytes for messageId.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getMessageIdBytes() {
+    java.lang.Object ref = messageId_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      messageId_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -179,11 +202,11 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (type_ != apache.rocketmq.v2.DigestType.DIGEST_TYPE_UNSPECIFIED.getNumber()) {
-      output.writeEnum(1, type_);
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(topic_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, topic_);
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(checksum_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, checksum_);
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(messageId_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, messageId_);
     }
     unknownFields.writeTo(output);
   }
@@ -194,12 +217,11 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (type_ != apache.rocketmq.v2.DigestType.DIGEST_TYPE_UNSPECIFIED.getNumber()) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeEnumSize(1, type_);
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(topic_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, topic_);
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(checksum_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, checksum_);
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(messageId_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, messageId_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -211,14 +233,15 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof apache.rocketmq.v2.Digest)) {
+    if (!(obj instanceof apache.rocketmq.v2.DeadLetterQueue)) {
       return super.equals(obj);
     }
-    apache.rocketmq.v2.Digest other = (apache.rocketmq.v2.Digest) obj;
+    apache.rocketmq.v2.DeadLetterQueue other = (apache.rocketmq.v2.DeadLetterQueue) obj;
 
-    if (type_ != other.type_) return false;
-    if (!getChecksum()
-        .equals(other.getChecksum())) return false;
+    if (!getTopic()
+        .equals(other.getTopic())) return false;
+    if (!getMessageId()
+        .equals(other.getMessageId())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -230,78 +253,78 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + TYPE_FIELD_NUMBER;
-    hash = (53 * hash) + type_;
-    hash = (37 * hash) + CHECKSUM_FIELD_NUMBER;
-    hash = (53 * hash) + getChecksum().hashCode();
+    hash = (37 * hash) + TOPIC_FIELD_NUMBER;
+    hash = (53 * hash) + getTopic().hashCode();
+    hash = (37 * hash) + MESSAGE_ID_FIELD_NUMBER;
+    hash = (53 * hash) + getMessageId().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static apache.rocketmq.v2.Digest parseFrom(
+  public static apache.rocketmq.v2.DeadLetterQueue parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static apache.rocketmq.v2.Digest parseFrom(
+  public static apache.rocketmq.v2.DeadLetterQueue parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static apache.rocketmq.v2.Digest parseFrom(
+  public static apache.rocketmq.v2.DeadLetterQueue parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static apache.rocketmq.v2.Digest parseFrom(
+  public static apache.rocketmq.v2.DeadLetterQueue parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static apache.rocketmq.v2.Digest parseFrom(byte[] data)
+  public static apache.rocketmq.v2.DeadLetterQueue parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static apache.rocketmq.v2.Digest parseFrom(
+  public static apache.rocketmq.v2.DeadLetterQueue parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static apache.rocketmq.v2.Digest parseFrom(java.io.InputStream input)
+  public static apache.rocketmq.v2.DeadLetterQueue parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static apache.rocketmq.v2.Digest parseFrom(
+  public static apache.rocketmq.v2.DeadLetterQueue parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static apache.rocketmq.v2.Digest parseDelimitedFrom(java.io.InputStream input)
+  public static apache.rocketmq.v2.DeadLetterQueue parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static apache.rocketmq.v2.Digest parseDelimitedFrom(
+  public static apache.rocketmq.v2.DeadLetterQueue parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static apache.rocketmq.v2.Digest parseFrom(
+  public static apache.rocketmq.v2.DeadLetterQueue parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static apache.rocketmq.v2.Digest parseFrom(
+  public static apache.rocketmq.v2.DeadLetterQueue parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -314,7 +337,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(apache.rocketmq.v2.Digest prototype) {
+  public static Builder newBuilder(apache.rocketmq.v2.DeadLetterQueue prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -330,38 +353,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * <pre>
-   * When publishing messages to or subscribing messages from brokers, clients
-   * shall include or validate digests of message body to ensure data integrity.
-   * For message publishing, when an invalid digest were detected, brokers need
-   * respond client with BAD_REQUEST.
-   * For messages subscription, when an invalid digest were detected, consumers
-   * need to handle this case according to message type:
-   * 1) Standard messages should be negatively acknowledged instantly, causing
-   * immediate re-delivery; 2) FIFO messages require special RPC, to re-fetch
-   * previously acquired messages batch;
-   * </pre>
-   *
-   * Protobuf type {@code apache.rocketmq.v2.Digest}
+   * Protobuf type {@code apache.rocketmq.v2.DeadLetterQueue}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:apache.rocketmq.v2.Digest)
-      apache.rocketmq.v2.DigestOrBuilder {
+      // @@protoc_insertion_point(builder_implements:apache.rocketmq.v2.DeadLetterQueue)
+      apache.rocketmq.v2.DeadLetterQueueOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return apache.rocketmq.v2.MQDomain.internal_static_apache_rocketmq_v2_Digest_descriptor;
+      return apache.rocketmq.v2.MQDomain.internal_static_apache_rocketmq_v2_DeadLetterQueue_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return apache.rocketmq.v2.MQDomain.internal_static_apache_rocketmq_v2_Digest_fieldAccessorTable
+      return apache.rocketmq.v2.MQDomain.internal_static_apache_rocketmq_v2_DeadLetterQueue_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              apache.rocketmq.v2.Digest.class, apache.rocketmq.v2.Digest.Builder.class);
+              apache.rocketmq.v2.DeadLetterQueue.class, apache.rocketmq.v2.DeadLetterQueue.Builder.class);
     }
 
-    // Construct using apache.rocketmq.v2.Digest.newBuilder()
+    // Construct using apache.rocketmq.v2.DeadLetterQueue.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -379,9 +390,9 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      type_ = 0;
+      topic_ = "";
 
-      checksum_ = "";
+      messageId_ = "";
 
       return this;
     }
@@ -389,17 +400,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return apache.rocketmq.v2.MQDomain.internal_static_apache_rocketmq_v2_Digest_descriptor;
+      return apache.rocketmq.v2.MQDomain.internal_static_apache_rocketmq_v2_DeadLetterQueue_descriptor;
     }
 
     @java.lang.Override
-    public apache.rocketmq.v2.Digest getDefaultInstanceForType() {
-      return apache.rocketmq.v2.Digest.getDefaultInstance();
+    public apache.rocketmq.v2.DeadLetterQueue getDefaultInstanceForType() {
+      return apache.rocketmq.v2.DeadLetterQueue.getDefaultInstance();
     }
 
     @java.lang.Override
-    public apache.rocketmq.v2.Digest build() {
-      apache.rocketmq.v2.Digest result = buildPartial();
+    public apache.rocketmq.v2.DeadLetterQueue build() {
+      apache.rocketmq.v2.DeadLetterQueue result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -407,10 +418,10 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public apache.rocketmq.v2.Digest buildPartial() {
-      apache.rocketmq.v2.Digest result = new apache.rocketmq.v2.Digest(this);
-      result.type_ = type_;
-      result.checksum_ = checksum_;
+    public apache.rocketmq.v2.DeadLetterQueue buildPartial() {
+      apache.rocketmq.v2.DeadLetterQueue result = new apache.rocketmq.v2.DeadLetterQueue(this);
+      result.topic_ = topic_;
+      result.messageId_ = messageId_;
       onBuilt();
       return result;
     }
@@ -449,21 +460,22 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof apache.rocketmq.v2.Digest) {
-        return mergeFrom((apache.rocketmq.v2.Digest)other);
+      if (other instanceof apache.rocketmq.v2.DeadLetterQueue) {
+        return mergeFrom((apache.rocketmq.v2.DeadLetterQueue)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(apache.rocketmq.v2.Digest other) {
-      if (other == apache.rocketmq.v2.Digest.getDefaultInstance()) return this;
-      if (other.type_ != 0) {
-        setTypeValue(other.getTypeValue());
+    public Builder mergeFrom(apache.rocketmq.v2.DeadLetterQueue other) {
+      if (other == apache.rocketmq.v2.DeadLetterQueue.getDefaultInstance()) return this;
+      if (!other.getTopic().isEmpty()) {
+        topic_ = other.topic_;
+        onChanged();
       }
-      if (!other.getChecksum().isEmpty()) {
-        checksum_ = other.checksum_;
+      if (!other.getMessageId().isEmpty()) {
+        messageId_ = other.messageId_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -481,11 +493,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      apache.rocketmq.v2.Digest parsedMessage = null;
+      apache.rocketmq.v2.DeadLetterQueue parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (apache.rocketmq.v2.Digest) e.getUnfinishedMessage();
+        parsedMessage = (apache.rocketmq.v2.DeadLetterQueue) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -495,132 +507,194 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private int type_ = 0;
+    private java.lang.Object topic_ = "";
     /**
-     * <code>.apache.rocketmq.v2.DigestType type = 1;</code>
-     * @return The enum numeric value on the wire for type.
+     * <pre>
+     * Original topic for this DLQ message.
+     * </pre>
+     *
+     * <code>string topic = 1;</code>
+     * @return The topic.
      */
-    @java.lang.Override public int getTypeValue() {
-      return type_;
-    }
-    /**
-     * <code>.apache.rocketmq.v2.DigestType type = 1;</code>
-     * @param value The enum numeric value on the wire for type to set.
-     * @return This builder for chaining.
-     */
-    public Builder setTypeValue(int value) {
-      
-      type_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>.apache.rocketmq.v2.DigestType type = 1;</code>
-     * @return The type.
-     */
-    @java.lang.Override
-    public apache.rocketmq.v2.DigestType getType() {
-      @SuppressWarnings("deprecation")
-      apache.rocketmq.v2.DigestType result = apache.rocketmq.v2.DigestType.valueOf(type_);
-      return result == null ? apache.rocketmq.v2.DigestType.UNRECOGNIZED : result;
-    }
-    /**
-     * <code>.apache.rocketmq.v2.DigestType type = 1;</code>
-     * @param value The type to set.
-     * @return This builder for chaining.
-     */
-    public Builder setType(apache.rocketmq.v2.DigestType value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      
-      type_ = value.getNumber();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>.apache.rocketmq.v2.DigestType type = 1;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearType() {
-      
-      type_ = 0;
-      onChanged();
-      return this;
-    }
-
-    private java.lang.Object checksum_ = "";
-    /**
-     * <code>string checksum = 2;</code>
-     * @return The checksum.
-     */
-    public java.lang.String getChecksum() {
-      java.lang.Object ref = checksum_;
+    public java.lang.String getTopic() {
+      java.lang.Object ref = topic_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        checksum_ = s;
+        topic_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string checksum = 2;</code>
-     * @return The bytes for checksum.
+     * <pre>
+     * Original topic for this DLQ message.
+     * </pre>
+     *
+     * <code>string topic = 1;</code>
+     * @return The bytes for topic.
      */
     public com.google.protobuf.ByteString
-        getChecksumBytes() {
-      java.lang.Object ref = checksum_;
+        getTopicBytes() {
+      java.lang.Object ref = topic_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        checksum_ = b;
+        topic_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string checksum = 2;</code>
-     * @param value The checksum to set.
+     * <pre>
+     * Original topic for this DLQ message.
+     * </pre>
+     *
+     * <code>string topic = 1;</code>
+     * @param value The topic to set.
      * @return This builder for chaining.
      */
-    public Builder setChecksum(
+    public Builder setTopic(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      checksum_ = value;
+      topic_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string checksum = 2;</code>
+     * <pre>
+     * Original topic for this DLQ message.
+     * </pre>
+     *
+     * <code>string topic = 1;</code>
      * @return This builder for chaining.
      */
-    public Builder clearChecksum() {
+    public Builder clearTopic() {
       
-      checksum_ = getDefaultInstance().getChecksum();
+      topic_ = getDefaultInstance().getTopic();
       onChanged();
       return this;
     }
     /**
-     * <code>string checksum = 2;</code>
-     * @param value The bytes for checksum to set.
+     * <pre>
+     * Original topic for this DLQ message.
+     * </pre>
+     *
+     * <code>string topic = 1;</code>
+     * @param value The bytes for topic to set.
      * @return This builder for chaining.
      */
-    public Builder setChecksumBytes(
+    public Builder setTopicBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      checksum_ = value;
+      topic_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object messageId_ = "";
+    /**
+     * <pre>
+     * Original message id for this DLQ message.
+     * </pre>
+     *
+     * <code>string message_id = 2;</code>
+     * @return The messageId.
+     */
+    public java.lang.String getMessageId() {
+      java.lang.Object ref = messageId_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        messageId_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <pre>
+     * Original message id for this DLQ message.
+     * </pre>
+     *
+     * <code>string message_id = 2;</code>
+     * @return The bytes for messageId.
+     */
+    public com.google.protobuf.ByteString
+        getMessageIdBytes() {
+      java.lang.Object ref = messageId_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        messageId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <pre>
+     * Original message id for this DLQ message.
+     * </pre>
+     *
+     * <code>string message_id = 2;</code>
+     * @param value The messageId to set.
+     * @return This builder for chaining.
+     */
+    public Builder setMessageId(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      messageId_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * Original message id for this DLQ message.
+     * </pre>
+     *
+     * <code>string message_id = 2;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearMessageId() {
+      
+      messageId_ = getDefaultInstance().getMessageId();
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * Original message id for this DLQ message.
+     * </pre>
+     *
+     * <code>string message_id = 2;</code>
+     * @param value The bytes for messageId to set.
+     * @return This builder for chaining.
+     */
+    public Builder setMessageIdBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      messageId_ = value;
       onChanged();
       return this;
     }
@@ -637,41 +711,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:apache.rocketmq.v2.Digest)
+    // @@protoc_insertion_point(builder_scope:apache.rocketmq.v2.DeadLetterQueue)
   }
 
-  // @@protoc_insertion_point(class_scope:apache.rocketmq.v2.Digest)
-  private static final apache.rocketmq.v2.Digest DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:apache.rocketmq.v2.DeadLetterQueue)
+  private static final apache.rocketmq.v2.DeadLetterQueue DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new apache.rocketmq.v2.Digest();
+    DEFAULT_INSTANCE = new apache.rocketmq.v2.DeadLetterQueue();
   }
 
-  public static apache.rocketmq.v2.Digest getDefaultInstance() {
+  public static apache.rocketmq.v2.DeadLetterQueue getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<Digest>
-      PARSER = new com.google.protobuf.AbstractParser<Digest>() {
+  private static final com.google.protobuf.Parser<DeadLetterQueue>
+      PARSER = new com.google.protobuf.AbstractParser<DeadLetterQueue>() {
     @java.lang.Override
-    public Digest parsePartialFrom(
+    public DeadLetterQueue parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new Digest(input, extensionRegistry);
+      return new DeadLetterQueue(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<Digest> parser() {
+  public static com.google.protobuf.Parser<DeadLetterQueue> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<Digest> getParserForType() {
+  public com.google.protobuf.Parser<DeadLetterQueue> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public apache.rocketmq.v2.Digest getDefaultInstanceForType() {
+  public apache.rocketmq.v2.DeadLetterQueue getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 
