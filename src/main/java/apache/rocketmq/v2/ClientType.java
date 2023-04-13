@@ -24,6 +24,10 @@ public enum ClientType
    * <code>SIMPLE_CONSUMER = 3;</code>
    */
   SIMPLE_CONSUMER(3),
+  /**
+   * <code>PULL_CONSUMER = 4;</code>
+   */
+  PULL_CONSUMER(4),
   UNRECOGNIZED(-1),
   ;
 
@@ -43,6 +47,10 @@ public enum ClientType
    * <code>SIMPLE_CONSUMER = 3;</code>
    */
   public static final int SIMPLE_CONSUMER_VALUE = 3;
+  /**
+   * <code>PULL_CONSUMER = 4;</code>
+   */
+  public static final int PULL_CONSUMER_VALUE = 4;
 
 
   public final int getNumber() {
@@ -73,6 +81,7 @@ public enum ClientType
       case 1: return PRODUCER;
       case 2: return PUSH_CONSUMER;
       case 3: return SIMPLE_CONSUMER;
+      case 4: return PULL_CONSUMER;
       default: return null;
     }
   }

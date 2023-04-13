@@ -182,6 +182,14 @@ public enum Code
   ILLEGAL_POLLING_TIME(40018),
   /**
    * <pre>
+   * Offset is illegal.
+   * </pre>
+   *
+   * <code>ILLEGAL_OFFSET = 40019;</code>
+   */
+  ILLEGAL_OFFSET(40019),
+  /**
+   * <pre>
    * Generic code indicates that the client request lacks valid authentication
    * credentials for the requested resource.
    * </pre>
@@ -574,6 +582,14 @@ public enum Code
   public static final int ILLEGAL_POLLING_TIME_VALUE = 40018;
   /**
    * <pre>
+   * Offset is illegal.
+   * </pre>
+   *
+   * <code>ILLEGAL_OFFSET = 40019;</code>
+   */
+  public static final int ILLEGAL_OFFSET_VALUE = 40019;
+  /**
+   * <pre>
    * Generic code indicates that the client request lacks valid authentication
    * credentials for the requested resource.
    * </pre>
@@ -837,6 +853,7 @@ public enum Code
       case 40016: return MESSAGE_CORRUPTED;
       case 40017: return CLIENT_ID_REQUIRED;
       case 40018: return ILLEGAL_POLLING_TIME;
+      case 40019: return ILLEGAL_OFFSET;
       case 40100: return UNAUTHORIZED;
       case 40200: return PAYMENT_REQUIRED;
       case 40300: return FORBIDDEN;
