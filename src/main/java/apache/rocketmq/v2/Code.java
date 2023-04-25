@@ -247,6 +247,14 @@ public enum Code
   CONSUMER_GROUP_NOT_FOUND(40403),
   /**
    * <pre>
+   * Offset not found from server.
+   * </pre>
+   *
+   * <code>OFFSET_NOT_FOUND = 40404;</code>
+   */
+  OFFSET_NOT_FOUND(40404),
+  /**
+   * <pre>
    * Generic code representing client side timeout when connecting to, reading data from, or write data to server.
    * </pre>
    *
@@ -647,6 +655,14 @@ public enum Code
   public static final int CONSUMER_GROUP_NOT_FOUND_VALUE = 40403;
   /**
    * <pre>
+   * Offset not found from server.
+   * </pre>
+   *
+   * <code>OFFSET_NOT_FOUND = 40404;</code>
+   */
+  public static final int OFFSET_NOT_FOUND_VALUE = 40404;
+  /**
+   * <pre>
    * Generic code representing client side timeout when connecting to, reading data from, or write data to server.
    * </pre>
    *
@@ -861,6 +877,7 @@ public enum Code
       case 40401: return MESSAGE_NOT_FOUND;
       case 40402: return TOPIC_NOT_FOUND;
       case 40403: return CONSUMER_GROUP_NOT_FOUND;
+      case 40404: return OFFSET_NOT_FOUND;
       case 40800: return REQUEST_TIMEOUT;
       case 41300: return PAYLOAD_TOO_LARGE;
       case 41301: return MESSAGE_BODY_TOO_LARGE;
