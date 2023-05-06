@@ -233,7 +233,7 @@ public final class MQService {
       "QueryAssignmentResponse\022*\n\006status\030\001 \001(\0132" +
       "\032.apache.rocketmq.v2.Status\0223\n\013assignmen" +
       "ts\030\002 \003(\0132\036.apache.rocketmq.v2.Assignment" +
-      "\"\220\003\n\025ReceiveMessageRequest\022+\n\005group\030\001 \001(" +
+      "\"\270\003\n\025ReceiveMessageRequest\022+\n\005group\030\001 \001(" +
       "\0132\034.apache.rocketmq.v2.Resource\0227\n\rmessa" +
       "ge_queue\030\002 \001(\0132 .apache.rocketmq.v2.Mess" +
       "ageQueue\022?\n\021filter_expression\030\003 \001(\0132$.ap" +
@@ -241,9 +241,10 @@ public final class MQService {
       "ch_size\030\004 \001(\005\022:\n\022invisible_duration\030\005 \001(" +
       "\0132\031.google.protobuf.DurationH\000\210\001\001\022\022\n\naut" +
       "o_renew\030\006 \001(\010\022<\n\024long_polling_timeout\030\007 " +
-      "\001(\0132\031.google.protobuf.DurationH\001\210\001\001B\025\n\023_" +
-      "invisible_durationB\027\n\025_long_polling_time" +
-      "out\"\273\001\n\026ReceiveMessageResponse\022,\n\006status" +
+      "\001(\0132\031.google.protobuf.DurationH\001\210\001\001\022\027\n\na" +
+      "ttempt_id\030\010 \001(\tH\002\210\001\001B\025\n\023_invisible_durat" +
+      "ionB\027\n\025_long_polling_timeoutB\r\n\013_attempt" +
+      "_id\"\273\001\n\026ReceiveMessageResponse\022,\n\006status" +
       "\030\001 \001(\0132\032.apache.rocketmq.v2.StatusH\000\022.\n\007" +
       "message\030\002 \001(\0132\033.apache.rocketmq.v2.Messa" +
       "geH\000\0228\n\022delivery_timestamp\030\003 \001(\0132\032.googl" +
@@ -443,7 +444,7 @@ public final class MQService {
     internal_static_apache_rocketmq_v2_ReceiveMessageRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_apache_rocketmq_v2_ReceiveMessageRequest_descriptor,
-        new java.lang.String[] { "Group", "MessageQueue", "FilterExpression", "BatchSize", "InvisibleDuration", "AutoRenew", "LongPollingTimeout", "InvisibleDuration", "LongPollingTimeout", });
+        new java.lang.String[] { "Group", "MessageQueue", "FilterExpression", "BatchSize", "InvisibleDuration", "AutoRenew", "LongPollingTimeout", "AttemptId", "InvisibleDuration", "LongPollingTimeout", "AttemptId", });
     internal_static_apache_rocketmq_v2_ReceiveMessageResponse_descriptor =
       getDescriptor().getMessageTypes().get(8);
     internal_static_apache_rocketmq_v2_ReceiveMessageResponse_fieldAccessorTable = new

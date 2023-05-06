@@ -16,6 +16,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private ReceiveMessageRequest() {
+    attemptId_ = "";
   }
 
   @java.lang.Override
@@ -122,6 +123,12 @@ private static final long serialVersionUID = 0L;
               longPollingTimeout_ = subBuilder.buildPartial();
             }
             bitField0_ |= 0x00000002;
+            break;
+          }
+          case 66: {
+            java.lang.String s = input.readStringRequireUtf8();
+            bitField0_ |= 0x00000004;
+            attemptId_ = s;
             break;
           }
           default: {
@@ -327,6 +334,52 @@ private static final long serialVersionUID = 0L;
     return longPollingTimeout_ == null ? com.google.protobuf.Duration.getDefaultInstance() : longPollingTimeout_;
   }
 
+  public static final int ATTEMPT_ID_FIELD_NUMBER = 8;
+  private volatile java.lang.Object attemptId_;
+  /**
+   * <code>optional string attempt_id = 8;</code>
+   * @return Whether the attemptId field is set.
+   */
+  @java.lang.Override
+  public boolean hasAttemptId() {
+    return ((bitField0_ & 0x00000004) != 0);
+  }
+  /**
+   * <code>optional string attempt_id = 8;</code>
+   * @return The attemptId.
+   */
+  @java.lang.Override
+  public java.lang.String getAttemptId() {
+    java.lang.Object ref = attemptId_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      attemptId_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>optional string attempt_id = 8;</code>
+   * @return The bytes for attemptId.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getAttemptIdBytes() {
+    java.lang.Object ref = attemptId_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      attemptId_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -361,6 +414,9 @@ private static final long serialVersionUID = 0L;
     }
     if (((bitField0_ & 0x00000002) != 0)) {
       output.writeMessage(7, getLongPollingTimeout());
+    }
+    if (((bitField0_ & 0x00000004) != 0)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 8, attemptId_);
     }
     unknownFields.writeTo(output);
   }
@@ -398,6 +454,9 @@ private static final long serialVersionUID = 0L;
     if (((bitField0_ & 0x00000002) != 0)) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(7, getLongPollingTimeout());
+    }
+    if (((bitField0_ & 0x00000004) != 0)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, attemptId_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -443,6 +502,11 @@ private static final long serialVersionUID = 0L;
       if (!getLongPollingTimeout()
           .equals(other.getLongPollingTimeout())) return false;
     }
+    if (hasAttemptId() != other.hasAttemptId()) return false;
+    if (hasAttemptId()) {
+      if (!getAttemptId()
+          .equals(other.getAttemptId())) return false;
+    }
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -478,6 +542,10 @@ private static final long serialVersionUID = 0L;
     if (hasLongPollingTimeout()) {
       hash = (37 * hash) + LONG_POLLING_TIMEOUT_FIELD_NUMBER;
       hash = (53 * hash) + getLongPollingTimeout().hashCode();
+    }
+    if (hasAttemptId()) {
+      hash = (37 * hash) + ATTEMPT_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getAttemptId().hashCode();
     }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
@@ -648,6 +716,8 @@ private static final long serialVersionUID = 0L;
         longPollingTimeoutBuilder_.clear();
       }
       bitField0_ = (bitField0_ & ~0x00000002);
+      attemptId_ = "";
+      bitField0_ = (bitField0_ & ~0x00000004);
       return this;
     }
 
@@ -709,6 +779,10 @@ private static final long serialVersionUID = 0L;
         }
         to_bitField0_ |= 0x00000002;
       }
+      if (((from_bitField0_ & 0x00000004) != 0)) {
+        to_bitField0_ |= 0x00000004;
+      }
+      result.attemptId_ = attemptId_;
       result.bitField0_ = to_bitField0_;
       onBuilt();
       return result;
@@ -778,6 +852,11 @@ private static final long serialVersionUID = 0L;
       }
       if (other.hasLongPollingTimeout()) {
         mergeLongPollingTimeout(other.getLongPollingTimeout());
+      }
+      if (other.hasAttemptId()) {
+        bitField0_ |= 0x00000004;
+        attemptId_ = other.attemptId_;
+        onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -1514,6 +1593,89 @@ private static final long serialVersionUID = 0L;
         longPollingTimeout_ = null;
       }
       return longPollingTimeoutBuilder_;
+    }
+
+    private java.lang.Object attemptId_ = "";
+    /**
+     * <code>optional string attempt_id = 8;</code>
+     * @return Whether the attemptId field is set.
+     */
+    public boolean hasAttemptId() {
+      return ((bitField0_ & 0x00000004) != 0);
+    }
+    /**
+     * <code>optional string attempt_id = 8;</code>
+     * @return The attemptId.
+     */
+    public java.lang.String getAttemptId() {
+      java.lang.Object ref = attemptId_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        attemptId_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>optional string attempt_id = 8;</code>
+     * @return The bytes for attemptId.
+     */
+    public com.google.protobuf.ByteString
+        getAttemptIdBytes() {
+      java.lang.Object ref = attemptId_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        attemptId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>optional string attempt_id = 8;</code>
+     * @param value The attemptId to set.
+     * @return This builder for chaining.
+     */
+    public Builder setAttemptId(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+      attemptId_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>optional string attempt_id = 8;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearAttemptId() {
+      bitField0_ = (bitField0_ & ~0x00000004);
+      attemptId_ = getDefaultInstance().getAttemptId();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>optional string attempt_id = 8;</code>
+     * @param value The bytes for attemptId to set.
+     * @return This builder for chaining.
+     */
+    public Builder setAttemptIdBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      bitField0_ |= 0x00000004;
+      attemptId_ = value;
+      onChanged();
+      return this;
     }
     @java.lang.Override
     public final Builder setUnknownFields(
