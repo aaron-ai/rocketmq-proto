@@ -661,6 +661,10 @@ public final class MessagingServiceGrpc {
     }
 
     /**
+     * <pre>
+     * PullMessage and ReceiveMessage RPCs serve a similar purpose,
+     * which is to attempt to get messages from the server, but with different semantics.
+     * </pre>
      */
     public void pullMessage(apache.rocketmq.v2.PullMessageRequest request,
         io.grpc.stub.StreamObserver<apache.rocketmq.v2.PullMessageResponse> responseObserver) {
@@ -668,6 +672,10 @@ public final class MessagingServiceGrpc {
     }
 
     /**
+     * <pre>
+     * Update the consumption progress of the designated queue of the
+     * consumer group to the remote.
+     * </pre>
      */
     public void updateOffset(apache.rocketmq.v2.UpdateOffsetRequest request,
         io.grpc.stub.StreamObserver<apache.rocketmq.v2.UpdateOffsetResponse> responseObserver) {
@@ -675,6 +683,10 @@ public final class MessagingServiceGrpc {
     }
 
     /**
+     * <pre>
+     * Query the consumption progress of the designated queue of the
+     * consumer group to the remote.
+     * </pre>
      */
     public void getOffset(apache.rocketmq.v2.GetOffsetRequest request,
         io.grpc.stub.StreamObserver<apache.rocketmq.v2.GetOffsetResponse> responseObserver) {
@@ -682,6 +694,9 @@ public final class MessagingServiceGrpc {
     }
 
     /**
+     * <pre>
+     * Query the offset of the designated queue by the query offset policy.
+     * </pre>
      */
     public void queryOffset(apache.rocketmq.v2.QueryOffsetRequest request,
         io.grpc.stub.StreamObserver<apache.rocketmq.v2.QueryOffsetResponse> responseObserver) {
@@ -991,6 +1006,10 @@ public final class MessagingServiceGrpc {
     }
 
     /**
+     * <pre>
+     * PullMessage and ReceiveMessage RPCs serve a similar purpose,
+     * which is to attempt to get messages from the server, but with different semantics.
+     * </pre>
      */
     public void pullMessage(apache.rocketmq.v2.PullMessageRequest request,
         io.grpc.stub.StreamObserver<apache.rocketmq.v2.PullMessageResponse> responseObserver) {
@@ -999,6 +1018,10 @@ public final class MessagingServiceGrpc {
     }
 
     /**
+     * <pre>
+     * Update the consumption progress of the designated queue of the
+     * consumer group to the remote.
+     * </pre>
      */
     public void updateOffset(apache.rocketmq.v2.UpdateOffsetRequest request,
         io.grpc.stub.StreamObserver<apache.rocketmq.v2.UpdateOffsetResponse> responseObserver) {
@@ -1007,6 +1030,10 @@ public final class MessagingServiceGrpc {
     }
 
     /**
+     * <pre>
+     * Query the consumption progress of the designated queue of the
+     * consumer group to the remote.
+     * </pre>
      */
     public void getOffset(apache.rocketmq.v2.GetOffsetRequest request,
         io.grpc.stub.StreamObserver<apache.rocketmq.v2.GetOffsetResponse> responseObserver) {
@@ -1015,6 +1042,9 @@ public final class MessagingServiceGrpc {
     }
 
     /**
+     * <pre>
+     * Query the offset of the designated queue by the query offset policy.
+     * </pre>
      */
     public void queryOffset(apache.rocketmq.v2.QueryOffsetRequest request,
         io.grpc.stub.StreamObserver<apache.rocketmq.v2.QueryOffsetResponse> responseObserver) {
@@ -1213,6 +1243,10 @@ public final class MessagingServiceGrpc {
     }
 
     /**
+     * <pre>
+     * PullMessage and ReceiveMessage RPCs serve a similar purpose,
+     * which is to attempt to get messages from the server, but with different semantics.
+     * </pre>
      */
     public java.util.Iterator<apache.rocketmq.v2.PullMessageResponse> pullMessage(
         apache.rocketmq.v2.PullMessageRequest request) {
@@ -1221,6 +1255,10 @@ public final class MessagingServiceGrpc {
     }
 
     /**
+     * <pre>
+     * Update the consumption progress of the designated queue of the
+     * consumer group to the remote.
+     * </pre>
      */
     public apache.rocketmq.v2.UpdateOffsetResponse updateOffset(apache.rocketmq.v2.UpdateOffsetRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
@@ -1228,6 +1266,10 @@ public final class MessagingServiceGrpc {
     }
 
     /**
+     * <pre>
+     * Query the consumption progress of the designated queue of the
+     * consumer group to the remote.
+     * </pre>
      */
     public apache.rocketmq.v2.GetOffsetResponse getOffset(apache.rocketmq.v2.GetOffsetRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
@@ -1235,6 +1277,9 @@ public final class MessagingServiceGrpc {
     }
 
     /**
+     * <pre>
+     * Query the offset of the designated queue by the query offset policy.
+     * </pre>
      */
     public apache.rocketmq.v2.QueryOffsetResponse queryOffset(apache.rocketmq.v2.QueryOffsetRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
@@ -1398,6 +1443,10 @@ public final class MessagingServiceGrpc {
     }
 
     /**
+     * <pre>
+     * Update the consumption progress of the designated queue of the
+     * consumer group to the remote.
+     * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<apache.rocketmq.v2.UpdateOffsetResponse> updateOffset(
         apache.rocketmq.v2.UpdateOffsetRequest request) {
@@ -1406,6 +1455,10 @@ public final class MessagingServiceGrpc {
     }
 
     /**
+     * <pre>
+     * Query the consumption progress of the designated queue of the
+     * consumer group to the remote.
+     * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<apache.rocketmq.v2.GetOffsetResponse> getOffset(
         apache.rocketmq.v2.GetOffsetRequest request) {
@@ -1414,6 +1467,9 @@ public final class MessagingServiceGrpc {
     }
 
     /**
+     * <pre>
+     * Query the offset of the designated queue by the query offset policy.
+     * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<apache.rocketmq.v2.QueryOffsetResponse> queryOffset(
         apache.rocketmq.v2.QueryOffsetRequest request) {
